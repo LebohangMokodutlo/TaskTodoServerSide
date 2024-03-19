@@ -134,3 +134,4 @@ C:\Users\LebohangMokodutlo\DotNetCoreApps\TaskTodoApi\TaskTodoApi\obj\Debug\net8
 C:\Users\LebohangMokodutlo\DotNetCoreApps\TaskTodoApi\TaskTodoApi\obj\Debug\net8.0\TaskTodoApi.pdb
 C:\Users\LebohangMokodutlo\DotNetCoreApps\TaskTodoApi\TaskTodoApi\obj\Debug\net8.0\TaskTodoApi.genruntimeconfig.cache
 C:\Users\LebohangMokodutlo\DotNetCoreApps\TaskTodoApi\TaskTodoApi\obj\Debug\net8.0\ref\TaskTodoApi.dll
+C:\Users\LebohangMokodutlo\DotNetCoreApps\TaskTodoApi\TaskTodoApi\obj\Debug\net8.0\TaskTodoApi.sourcelink.json

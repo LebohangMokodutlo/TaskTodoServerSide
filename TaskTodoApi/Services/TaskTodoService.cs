@@ -23,24 +23,22 @@ namespace TaskTodoApi.Services
             return await _repository.GetTaskById(id);
         }
 
-        public async Task CreateTaskTodo(TaskTodoDto taskDto)
+        public async Task CreateTaskTodo(CreateTaskTodoDto createTaskDto)
         {
-            var task = MapDtoToModel(taskDto);
+            var task = MapCreateTaskTodoDtoToModel(createTaskDto);
             await _repository.CreateTask(task);
         }
 
-        public async Task<TaskTodo> UpdateTaskTodo(int id, TaskTodoDto updatedTaskDto)
+        public async Task<TaskTodo> UpdateTaskTodo(int id, UpdateTaskTodoDto updatedTaskTodoDto)
         {
             var existingTask = await _repository.GetTaskById(id);
-            if(existingTask == null)
+            if (existingTask == null)
             {
-                throw new Exception();
+                throw new Exception("Task not found"); // Better to provide a more informative exception message
             }
 
-            existingTask.Department = updatedTaskDto.Department;
-            existingTask.Title = updatedTaskDto.Title;
-            existingTask.Description = updatedTaskDto.Description;
-            existingTask.Deadline = updatedTaskDto.Deadline;
+            // Use mapping method to update existing task
+            MapUpdateTaskTodoDtoToModel(updatedTaskTodoDto, existingTask);
 
             await _repository.UpdateTask(id, existingTask);
 
@@ -52,8 +50,17 @@ namespace TaskTodoApi.Services
             await _repository.DeleteTask(id);
         }
 
-       private TaskTodo MapDtoToModel(TaskTodoDto dto)
-            {
+        private void MapUpdateTaskTodoDtoToModel(UpdateTaskTodoDto dto, TaskTodo existingTask)
+        {
+            existingTask.Department = dto.Department;
+            existingTask.Title = dto.Title;
+            existingTask.Description = dto.Description;
+            existingTask.Deadline = dto.Deadline;
+        }
+
+
+        private TaskTodo MapCreateTaskTodoDtoToModel(CreateTaskTodoDto dto)
+        {
             return new TaskTodo
             {
                 Department = dto.Department,
@@ -61,6 +68,6 @@ namespace TaskTodoApi.Services
                 Description = dto.Description,
                 Deadline = dto.Deadline,
             };
-          }
+        }
     }
 }

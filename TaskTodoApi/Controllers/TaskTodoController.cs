@@ -41,7 +41,7 @@ namespace TaskTodoApi.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult<List<TaskTodo>>> CreateTaskTodo(TaskTodoDto taskTodoDto)
+        public async Task<ActionResult<List<TaskTodo>>> CreateTaskTodo(CreateTaskTodoDto taskTodoDto)
         {
             await _taskTodoService.CreateTaskTodo(taskTodoDto);
             return Ok(await _taskTodoService.GetAllTasks());
@@ -49,7 +49,7 @@ namespace TaskTodoApi.Controllers
 
         [HttpPut("{id}")]
 
-        public async Task<ActionResult<List<TaskTodo>>> UpdateTaskTodo(int id, [FromBody] TaskTodoDto taskTodoDto)
+        public async Task<ActionResult<List<TaskTodo>>> UpdateTaskTodo(int id, [FromBody] UpdateTaskTodoDto updateTaskTodoDto)
         {
             var updatedTask = await _taskTodoService.GetTaskById(id);
             if (updatedTask == null)
@@ -58,7 +58,7 @@ namespace TaskTodoApi.Controllers
 
             }
 
-            await _taskTodoService.UpdateTaskTodo(id, taskTodoDto);
+            await _taskTodoService.UpdateTaskTodo(id, updateTaskTodoDto);
             return Ok(updatedTask);
         }
 

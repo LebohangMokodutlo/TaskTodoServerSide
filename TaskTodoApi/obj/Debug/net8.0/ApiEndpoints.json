@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "taskTodoDto",
-        "Type": "TaskTodoApi.Dtos.TaskTodoDto",
+        "Type": "TaskTodoApi.Dtos.CreateTaskTodoDto",
         "IsRequired": true
       }
     ],
@@ -65,8 +65,8 @@
         "IsRequired": true
       },
       {
-        "Name": "taskTodoDto",
-        "Type": "TaskTodoApi.Dtos.TaskTodoDto",
+        "Name": "updateTaskTodoDto",
+        "Type": "TaskTodoApi.Dtos.UpdateTaskTodoDto",
         "IsRequired": true
       }
     ],
